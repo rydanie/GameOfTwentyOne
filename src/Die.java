@@ -22,6 +22,12 @@ public class Die {
 			roll();
 		}
 		
+
+		public Die() {
+			// TODO Auto-generated constructor stub
+		}
+
+
 		/**
 		 * The roll method simulates the rolling of the die
 		 */
