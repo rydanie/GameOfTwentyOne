@@ -21,11 +21,6 @@ public class Die {
 			sides = numSides;
 			roll();
 		}
-		
-
-		public Die() {
-			// TODO Auto-generated constructor stub
-		}
 
 
 		/**
