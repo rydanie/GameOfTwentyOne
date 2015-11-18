@@ -8,6 +8,8 @@ public class GameOfTwentyOne {
 
 	/**
 	 * @param args
+	 * Main method for game of 21
+	 * Computer and player scores are compared to find a winner 
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -17,24 +19,26 @@ public class GameOfTwentyOne {
 		int comScore = 0;
 		int comTotal = 0;
 		
-		Scanner key = new Scanner(System.in);
+		Scanner key = new Scanner(System.in);// create new scanner object
 		
+		// The main game takes place in this loop
 		while(playerTotal <= 21 && comTotal <= 21)
 		{
 			char choice;
 			System.out.println("Do you want to hit \n'y' (for yes) \n'n' (for no)");
 			choice = key.next().charAt(0);
 			
-			Die comRoll = new Die(6);
+			Die comRoll = new Die(6);// create new die
 			
-			comScore = comRoll.getValue();
+			comScore = comRoll.getValue();// uses Die class method
 			comTotal = comTotal + comScore;
 			
+			// code is run every time the the user types y
 			if(choice == 'y')
 			{
-			Die playerRoll = new Die(6);
+			Die playerRoll = new Die(6);// create new die
 				
-			playerScore = playerRoll.getValue();
+			playerScore = playerRoll.getValue();// uses Die class method
 			playerTotal = playerTotal + playerScore;
 				
 			} else if (choice == 'n'){
@@ -47,6 +51,7 @@ public class GameOfTwentyOne {
 					
 					System.exit(0);// end program
 					
+					// runs if the user doesn't type y or n, so don't be a cheater
 				} else {
 					
 					System.out.println("\nYou win!");
@@ -66,7 +71,8 @@ public class GameOfTwentyOne {
 					
 					System.exit(0);// end program
 				}
-				
+			
+				//code runs if player chooses not to hit
 			}else if(choice != 'n' || choice != 'y'){
 						System.out.println("\ninvalid input! You are a cheater!!! \nGAME OVER");
 						
@@ -76,6 +82,7 @@ public class GameOfTwentyOne {
 			System.out.println("\nYou have " + playerTotal);
 		}
 		
+		// runs code if the computer or player goes over 21 
 		System.out.println("\nYou have " + playerTotal + " while the dealer has " + comTotal);
 		
 		if(playerTotal > 21 && comTotal <=21)
