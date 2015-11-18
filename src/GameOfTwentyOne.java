@@ -18,34 +18,44 @@ public class GameOfTwentyOne {
 		int playerTotal = 0;
 		int comScore = 0;
 		int comTotal = 0;
+		char choice;
 		
 		Scanner key = new Scanner(System.in);// create new scanner object
+		
+		Die roll = new Die(6);// create new die
+		//Die comRoll = new Die(6);// create new die
 		
 		// The main game takes place in this loop
 		while(playerTotal <= 21 && comTotal <= 21)
 		{
-			char choice;
+			
 			System.out.println("Do you want to hit \n'y' (for yes) \n'n' (for no)");
 			choice = key.next().charAt(0);
 			
-			Die comRoll = new Die(6);// create new die
-			
-			comScore = comRoll.getValue();// uses Die class method
+			roll.roll();
+			comScore = roll.getValue();// uses Die class method
 			comTotal = comTotal + comScore;
 			
 			// code is run every time the the user types y
 			if(choice == 'y')
 			{
-			Die playerRoll = new Die(6);// create new die
-				
-			playerScore = playerRoll.getValue();// uses Die class method
-			playerTotal = playerTotal + playerScore;
+			
+				roll.roll();
+				playerScore = roll.getValue();// uses Die class method
+				playerTotal = playerTotal + playerScore;
 				
 			} else if (choice == 'n'){
 				
 				System.out.println("\nYou have " + playerTotal + " while the dealer has " + comTotal);
 				
-				if(playerTotal < comTotal && (comTotal <= 21))
+				
+				if(playerTotal == comTotal){
+					System.out.println("its a Draw");
+
+					System.exit(0);// end program
+				}
+				
+				else if(playerTotal < comTotal && (comTotal <= 21))
 				{
 					System.out.println("\nThe dealer won this game. You could have hit one more time.");
 					
@@ -92,9 +102,27 @@ public class GameOfTwentyOne {
 			System.exit(0);// end program
 		}
 		
-		if( playerTotal <= 21 && comTotal > 21)
+		else if( playerTotal <= 21 && comTotal > 21)
 		{
 			System.out.println("You win!");
+			
+			System.exit(0);// end program
+		} 
+		
+		else if( playerTotal < comTotal && comTotal > 21 && playerTotal > 21) {
+			System.out.println("You win by having the lower number over 21");
+			
+			System.exit(0);// end program
+		}
+		
+		else if(playerTotal >  comTotal && comTotal > 21 && playerTotal > 21) {
+			System.out.println("You loose. You were the furthest over 21");
+			
+			System.exit(0);// end program
+		}
+		
+		else if(playerTotal == comTotal && comTotal > 21 && playerTotal > 21) {
+			System.out.println("It's a DRAW!");
 			
 			System.exit(0);// end program
 		}
