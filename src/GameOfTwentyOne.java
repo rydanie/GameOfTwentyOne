@@ -15,9 +15,13 @@ public class GameOfTwentyOne {
 		// TODO Auto-generated method stub
 
 		int playerScore = 0;
+		int playDie1 = 0;
+		int playDie2 = 0;
 		int playerTotal = 0;
 		int comScore = 0;
 		int comTotal = 0;
+		int comDie1 = 0;
+		int comDie2 = 0;
 		char choice;
 		
 		Scanner key = new Scanner(System.in);// create new scanner object
@@ -26,14 +30,17 @@ public class GameOfTwentyOne {
 		//Die comRoll = new Die(6);// create new die
 		
 		// The main game takes place in this loop
-		while(playerTotal <= 21 && comTotal <= 21)
-		{
+		
+		do{
 			
 			System.out.println("Do you want to hit \n'y' (for yes) \n'n' (for no)");
 			choice = key.next().charAt(0);
 			
 			roll.roll();
-			comScore = roll.getValue();// uses Die class method
+			comDie1 = roll.getValue();// uses Die class method
+			roll.roll();
+			comDie2 = roll.getValue();
+			comScore = comDie1 + comDie2;
 			comTotal = comTotal + comScore;
 			
 			// code is run every time the the user types y
@@ -41,7 +48,10 @@ public class GameOfTwentyOne {
 			{
 			
 				roll.roll();
-				playerScore = roll.getValue();// uses Die class method
+				playDie1 = roll.getValue();// uses Die class method
+				roll.roll();
+				playDie2 = roll.getValue();
+				playerScore = playDie1 + playDie2;
 				playerTotal = playerTotal + playerScore;
 				
 			} else if (choice == 'n'){
@@ -91,6 +101,11 @@ public class GameOfTwentyOne {
 			
 			System.out.println("\nYou have " + playerTotal);
 		}
+			while(playerTotal <= 21 && comTotal <= 21);
+		
+		
+			
+		
 		
 		// runs code if the computer or player goes over 21 
 		System.out.println("\nYou have " + playerTotal + " while the dealer has " + comTotal);
