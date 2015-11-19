@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * @author ryley
+ * @author Ryley
  *
  */
 public class GameOfTwentyOne {
