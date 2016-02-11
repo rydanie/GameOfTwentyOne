@@ -11,7 +11,7 @@ public class GameOfTwentyOne {
 	 * Main method for game of 21
 	 * Computer and player scores are compared to find a winner 
 	 */
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		int playerScore = 0;
@@ -143,6 +143,6 @@ public class GameOfTwentyOne {
 		}
 	}
 		
-}
+//}
 
 
