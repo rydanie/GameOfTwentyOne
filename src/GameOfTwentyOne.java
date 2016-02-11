@@ -14,6 +14,8 @@ public class GameOfTwentyOne {
 //	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	public GameOfTwentyOne() {
+		
 		int playerScore = 0;
 		int playDie1 = 0;
 		int playDie2 = 0;
@@ -143,6 +145,7 @@ public class GameOfTwentyOne {
 		}
 	}
 		
-//}
+}
+
 
 
