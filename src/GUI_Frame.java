@@ -5,6 +5,7 @@ import javax.swing.*;
 public class GUI_Frame {
 	
 	 static JLabel myLabel;
+	 static JButton hold;
 	 static JButton myButton;
 	 static JButton textFieldUpdate;
 	 
@@ -19,10 +20,14 @@ public class GUI_Frame {
 	       // GridBagLayout l = new GridBagLayout();
 	        //GridBagConstraints lay = new GridBagConstraints();
 	        BorderLayout b = new BorderLayout();
-	        JPanel p = new JPanel(b);;  
-	        Dimension d = new Dimension(200,300);
+	        GridLayout g = new GridLayout(2,1);
+	        GridLayout h = new GridLayout(1,1);
+	        JPanel p = new JPanel(g);
+	        JPanel j = new JPanel(h);
+	        //p.setLayout(g);
+	        Dimension d = new Dimension(45,60);
 	        
-	      //  GridLayout; 
+	        
 	      //  BoxLayout;
 	      //  FlowLayout;
 	        
@@ -33,14 +38,33 @@ public class GUI_Frame {
 	      //  Rectangle r = new Rectangle(300,200,60,30);
 	       
 	        myLabel = new JLabel("Your Score");
-	        p.add(myLabel);
+	        myLabel.setPreferredSize(d);
+	        j.setPreferredSize(new Dimension(70, 65));
+	        j.add(myLabel);
+	        myFrame.add(j, BorderLayout.CENTER);
 	        
-	       // myButton = new JButton("Roll Die");
-	       // myButton.setPreferredSize(d);
-	        //myButton.setFont(new Font("TimesRoman", Font.ITALIC, 12));
-	        //p.add(myButton, BorderLayout.SOUTH);
+	        hold = new JButton("Hold");
+	        hold.setPreferredSize(d);
+	        hold.setFont(new Font("TimesRoman", Font.ITALIC, 12));
+	        p.add(hold);
+	        myFrame.add(p, b.SOUTH);
+	       // myFrame.add(hold, g);
+	        
+	        myButton = new JButton("Roll Die");
+	        d = new Dimension(45,60);
+	        myButton.setPreferredSize(d);
+	        myButton.setFont(new Font("TimesRoman", Font.ITALIC, 12));
+	        p.add(myButton);
+	        myFrame.add(p, BorderLayout.SOUTH);
 	       
+	        j = new JPanel(h);
+	        j.setPreferredSize(new Dimension(150,400));
+	        myFrame.add(j, BorderLayout.WEST);
 	       
+	        
+	        //dsfsdfsdf
+	        //fdhsfkljdsfhklj
+	        //fgdgfdklj
 	        
 	       // ActionListener listener = new MyListener();
 	       // myButton.addActionListener(listener);
@@ -48,9 +72,10 @@ public class GUI_Frame {
 	        
 	     //  myButton.setPreferredSize(new Dimension(40,40));
 	      //myButton.setBounds(r);
-	       myFrame.add(myButton);
+	       //myFrame.add(myButton);
 	       
-	     myFrame.setSize(400, 400);  
+	       myFrame.pack();
+	     myFrame.setSize(400, 500);  
 	     myFrame.setVisible(true);
 	 }
 	 
