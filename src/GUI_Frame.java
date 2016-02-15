@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import sun.applet.Main;
+
 
 
 public class GUI_Frame {
@@ -9,7 +11,7 @@ public class GUI_Frame {
 	 static JLabel myLabel;
 	 static JButton hold;
 	 static JButton myButton;
-	 static JButton textFieldUpdate;
+	 static JButton restart;
 	 static JLabel outcome;
 	 static JLabel dice1, dice2;
 	 static Color win, fail, draw;
@@ -41,6 +43,7 @@ public class GUI_Frame {
 	        GridLayout h = new GridLayout(2,1);
 	        JPanel p = new JPanel(h);
 	        JPanel j = new JPanel(g);
+	        JPanel r = new JPanel(h);
 	        ActionListener listener = new MyListener();
 	        //p.setLayout(g);
 	        Dimension d = new Dimension(45,60);
@@ -65,6 +68,12 @@ public class GUI_Frame {
 	        j.add(dice1);
 	        myFrame.add(j, BorderLayout.CENTER);
 	        
+	        myLabel = new JLabel("Your Score");
+	        myLabel.setPreferredSize(d);
+	        j.setPreferredSize(new Dimension(70, 140));
+	        j.add(myLabel);
+	        myFrame.add(j, BorderLayout.CENTER);
+	        
 	        outcome = new JLabel();
 	        outcome.setPreferredSize(d);
 	        outcome.setFont(new Font("TimesRoman", Font.ITALIC, 20));
@@ -72,11 +81,6 @@ public class GUI_Frame {
 	        j.add(outcome);
 	        myFrame.add(j, BorderLayout.CENTER);
 	       
-	        myLabel = new JLabel("Your Score");
-	        myLabel.setPreferredSize(d);
-	        j.setPreferredSize(new Dimension(70, 140));
-	        j.add(myLabel);
-	        myFrame.add(j, BorderLayout.CENTER);
 	        
 	        hold = new JButton("Hold");
 	        hold.setPreferredSize(d);
@@ -174,11 +178,11 @@ public class GUI_Frame {
 						
 	            	endLogic(playerTotal, comTotal);
 					break;
-					}
-	            	
-	            	
-	                }
-	            }
+					
+	           	
+	           		}
+             }
+	    }
 	        
 	 
 	 /**
@@ -251,7 +255,6 @@ public class GUI_Frame {
 					outcome.setForeground(win);
 					//System.exit(0);// end program
 				}
-				
 				
 				
 				
