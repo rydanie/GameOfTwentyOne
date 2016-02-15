@@ -55,7 +55,7 @@ public class GUI_Frame {
 	        
 	        dice2 = new JLabel();
 	        dice2.setPreferredSize(d);
-	        j.setPreferredSize(new Dimension(60, 65));
+	        j.setPreferredSize(new Dimension(25, 25));
 	        j.add(dice2);
 	        myFrame.add(j, BorderLayout.CENTER);
 	        
@@ -153,8 +153,8 @@ public class GUI_Frame {
 					
 					myLabel.setText( "Your score is: " + playerTotal );
 					
-					dice1.setText("Die 1: " + playDie1); 
-					dice2.setText("Die 2: " + playDie2);
+					dice1.setText("Die 1:    " + playDie1); 
+					dice2.setText("Die 2:    " + playDie2);
 	            	
 					if(playerTotal > 21 || comTotal > 21){
 						
