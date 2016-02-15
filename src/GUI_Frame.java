@@ -11,6 +11,8 @@ public class GUI_Frame {
 	 static JButton myButton;
 	 static JButton textFieldUpdate;
 	 static JLabel outcome;
+	 static JLabel dice1, dice2;
+	 static Color win, fail, draw;
 	 
 	 static Die roll = new Die(6);
 		
@@ -35,9 +37,9 @@ public class GUI_Frame {
 	       // GridBagLayout l = new GridBagLayout();
 	        //GridBagConstraints lay = new GridBagConstraints();
 	        BorderLayout b = new BorderLayout();
-	        GridLayout g = new GridLayout(2,1);
-	        GridLayout h = new GridLayout(1,1);
-	        JPanel p = new JPanel(g);
+	        GridLayout g = new GridLayout(4,1);
+	        GridLayout h = new GridLayout(2,1);
+	        JPanel p = new JPanel(h);
 	        JPanel j = new JPanel(g);
 	        ActionListener listener = new MyListener();
 	        //p.setLayout(g);
@@ -51,17 +53,28 @@ public class GUI_Frame {
 	        
 	        myFrame.setTitle("Game of TwentyOne");
 	        
-	      //  Rectangle r = new Rectangle(300,200,60,30);
+	        dice2 = new JLabel();
+	        dice2.setPreferredSize(d);
+	        j.setPreferredSize(new Dimension(60, 65));
+	        j.add(dice2);
+	        myFrame.add(j, BorderLayout.CENTER);
+	        
+	        dice1 = new JLabel();
+	        dice1.setPreferredSize(d);
+	        j.setPreferredSize(new Dimension(60, 65));
+	        j.add(dice1);
+	        myFrame.add(j, BorderLayout.CENTER);
 	        
 	        outcome = new JLabel();
 	        outcome.setPreferredSize(d);
-	        j.setPreferredSize(new Dimension(70, 65));
+	        outcome.setFont(new Font("TimesRoman", Font.ITALIC, 20));
+	        j.setPreferredSize(new Dimension(60, 65));
 	        j.add(outcome);
 	        myFrame.add(j, BorderLayout.CENTER);
 	       
 	        myLabel = new JLabel("Your Score");
 	        myLabel.setPreferredSize(d);
-	        j.setPreferredSize(new Dimension(70, 65));
+	        j.setPreferredSize(new Dimension(70, 140));
 	        j.add(myLabel);
 	        myFrame.add(j, BorderLayout.CENTER);
 	        
@@ -99,7 +112,7 @@ public class GUI_Frame {
 	       //myFrame.add(myButton);
 	       
 	       myFrame.pack();
-	     myFrame.setSize(500, 500);  
+	     myFrame.setSize(700, 500);  
 	     myFrame.setVisible(true);
 	 }
 	 
@@ -139,6 +152,9 @@ public class GUI_Frame {
 					playerTotal = playerTotal + playerScore;
 					
 					myLabel.setText( "Your score is: " + playerTotal );
+					
+					dice1.setText("Die 1: " + playDie1); 
+					dice2.setText("Die 2: " + playDie2);
 	            	
 					if(playerTotal > 21 || comTotal > 21){
 						
@@ -169,6 +185,10 @@ public class GUI_Frame {
 	  * Logic for ending the game
 	  */
 	 		public static void endLogic(int playerTotal, int comTotal){
+	 			win = Color.GREEN;
+	 			fail = Color.RED;
+	 			draw = Color.BLUE;
+	 			
 	 			
 	 			myButton.setEnabled(false);;
 				hold.setEnabled(false);;
@@ -177,58 +197,63 @@ public class GUI_Frame {
 				
 				
 				if(playerTotal == comTotal){
-					outcome.setText("its a Draw");
-					
+					outcome.setText("Its a Draw");
+					outcome.setForeground(draw);
 					
 					// end program
 					
 				}
 				
-				if(playerTotal < comTotal && (comTotal <= 21))
+				else if(playerTotal < comTotal && (comTotal <= 21))
 				{
 					
 					outcome.setText("\nThe dealer won this game. You could have hit one more time.");
-					
+					outcome.setForeground(fail);
 					//System.exit(0);// end program
+					
+				} else if(comTotal < playerTotal && playerTotal <= 21 ){
+						
+						outcome.setText("You win!");
+						outcome.setForeground(win);
+						//System.exit(0);// end program
 					
 					// runs if the user doesn't type y or n, so don't be a cheater
-				} else {
-					
-					outcome.setText("\nYou win!");
-					
-					//System.exit(0);// end program
 				}
-				
-				if(comTotal < playerTotal && playerTotal <= 21 ){
-					
-					outcome.setText("\nYou win!");
-					
-					//System.exit(0);// end program
-					
-				} else {
-					
-					outcome.setText("\nThe dealer won this game. You exceded 21");
-					
-					//System.exit(0);// end program
+						
+				else if( playerTotal < comTotal && comTotal > 21 && playerTotal > 21) {
+							outcome.setText("You win by having the lower number over 21");
+							outcome.setForeground(win);
+							//System.exit(0);// end program
 				}
-				
-				if( playerTotal < comTotal && comTotal > 21 && playerTotal > 21) {
-					outcome.setText("You win by having the lower number over 21");
-					
-					//System.exit(0);// end program
-				}
-				
+						
 				else if(playerTotal >  comTotal && comTotal > 21 && playerTotal > 21) {
-					outcome.setText("You loose. You were the furthest over 21");
+							outcome.setText("You loose. You were the furthest over 21");
+							outcome.setForeground(fail);
+							//System.exit(0);// end program
+				}
+						
+				else if(playerTotal == comTotal && comTotal > 21 && playerTotal > 21) {
+							outcome.setText("It's a DRAW!");
+							outcome.setForeground(draw);
+							//System.exit(0);// end program
+				}
+				 else if(playerTotal > comTotal && playerTotal > 21) {
+				
+				outcome.setText("The dealer won this game. You exceded 21");
+				outcome.setForeground(fail);
+				//System.exit(0);// end program
+				 }
+			
+						
+				else  {
 					
+					outcome.setText("\nYou win!");
+					outcome.setForeground(win);
 					//System.exit(0);// end program
 				}
 				
-				else if(playerTotal == comTotal && comTotal > 21 && playerTotal > 21) {
-					outcome.setText("It's a DRAW!");
-					
-					//System.exit(0);// end program
-				}
+				
+				
 				
 				
 				//System.exit(0);
