@@ -92,6 +92,9 @@ public class GUI_Frame {
 	            JButton eventSource = (JButton)e.getSource();
 	            if( eventSource.getText().equals("Roll Die") ) {
 	               // myLabel.setText( myTextField.getText() );
+	            	
+	            	
+	            	
 	            } else {
 	                myLabel.setForeground( theColors[++index] );
 	                if (index >= theColors.length - 1) {
@@ -100,4 +103,5 @@ public class GUI_Frame {
 	            }
 	        }
 	    }
+
 }
